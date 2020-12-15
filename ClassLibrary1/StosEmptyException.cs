@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Stos
+namespace ClassLibrary1
 {
     public class StosEmptyException : Exception
     {

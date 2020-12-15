@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stos;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using ClassLibrary1;
 
-namespace UnitTestProjectStos
+namespace UnitTestProject1
 {
     [TestClass]
     public class UnitTestStosChar
@@ -79,6 +79,44 @@ namespace UnitTestProjectStos
 
             char c = stos.Peek;
         }
-    }
+        [DataTestMethod]
+        [DataRow(1)]
+        [DataRow(4)]
+        [DataRow(5)]
+        [DataRow(10)]
+        [DataRow(100)]
+        public void TrimExcessTestMethod(int elements)
+        {
+            int expectedLength;
+            if (elements <= 5)
+                expectedLength = elements + 1;
+            else
+                expectedLength = elements + Convert.ToInt32((1 / 10d) * elements);
+            var s = new StosWTablicy<int>();
+            for (int i = 0; i < elements; i++)
+                s.Push(1);
+            s.TrimExcess();
+            Assert.AreEqual(expectedLength, s.GetActualTabLength());
+        }
+        [DataTestMethod]
+        [DataRow("test1",1)]
+        [DataRow("test1",2)]
+        [DataRow("test1",5)]
+        [DataRow("test1",100)]
+        public void IndexerTest(string val, int elements)
+        {
+            var s = new StosWTablicy<string>(elements);
+            for (int i = 0; i < elements; i++)
+            {
+                if (i == elements - 1)
+                    s.Push(val);
+                else
+                    s.Push("test0");
+            }
+            Assert.AreEqual(val, s[elements - 1]);
 
+
+        }
+
+    }
 }

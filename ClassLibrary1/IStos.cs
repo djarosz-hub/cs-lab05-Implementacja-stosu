@@ -1,4 +1,8 @@
-﻿namespace Stos
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ClassLibrary1
 {
     /// <summary>
     /// Interfejs stosu (generyczny)
@@ -37,5 +41,6 @@
 
         //kopiuje i eksportuje stos do tablicy
         T[] ToArray();
+        T this[int index] { get; }
     }
 }
