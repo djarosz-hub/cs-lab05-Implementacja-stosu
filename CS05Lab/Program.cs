@@ -19,9 +19,9 @@ namespace CS05Lab
             Console.WriteLine("---top to bottom---");
             foreach (var x in ((StosWTablicy<string>)s).TopToBottom)
                 Console.WriteLine(x);
-            Console.WriteLine(s.GetActualTabLength());
+            Console.WriteLine($"Actual tab length: {s.GetActualTabLength()}");
             s.TrimExcess();
-            Console.WriteLine(s.GetActualTabLength());
+            Console.WriteLine($"Length after TrimExcess: {s.GetActualTabLength()}");
 
             Console.WriteLine($"el at position 1 (\"aa\"): {s[1]} {"aa" == s[1]}");
             Console.WriteLine();
@@ -32,6 +32,30 @@ namespace CS05Lab
             foreach (var x in sToArray)
                 Console.WriteLine(x);
             //sToArrayReadOnly[1] = "ss"; read only error
+            Console.WriteLine("---StosWLiscie---");
+            StosWLiscie<int> sl = new StosWLiscie<int>();
+            sl.Push(5);
+            sl.Push(6);
+            Console.WriteLine($"el at index 1: {sl[1]}");
+            sl.Push(7);
+            sl.Push(8);
+            int[] tab = sl.ToArray();
+            foreach (var i in tab)
+                Console.Write($"{i} ");
+            Console.WriteLine("\nPop:");
+            sl.Pop();
+            tab = sl.ToArray();
+            foreach (var i in tab)
+                Console.Write($"{i} ");
+            Console.WriteLine();
+            Console.WriteLine("foreach through StosWLiscie");
+            foreach(var i in sl)
+                Console.Write($"{i} ");
+            Console.WriteLine($"\nIs array empty? {sl.IsEmpty}");
+            sl.Clear();
+            Console.WriteLine("After clear:");
+            Console.WriteLine($"Is array empty? {sl.IsEmpty}");
+
         }
     }
 }
